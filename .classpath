@@ -2,6 +2,8 @@
 <classpath>
 	<classpathentry kind="src" path="app/src/main/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="libs/com.google.android.camera.experimental2017.jar"/>
+	<classpathentry kind="lib" path="libs/com.google.android.camera.experimental2018.jar"/>
 	<classpathentry kind="lib" path="/Users/leonardo/Library/Android/sdk/platforms/android-36/android.jar"/>
 	<classpathentry kind="output" path="app/build/intermediates/javac/debug/classes"/>
 </classpath>
