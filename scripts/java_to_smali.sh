@@ -9,7 +9,7 @@ CLASS_NAME=$(basename "$RELATIVE_PATH")
 
 mkdir -p app/build/intermediates/{dex,smali}/debug
 
-/Users/leonardo/Library/Android/sdk/build-tools/37.0.0/d8 --output app/build/intermediates/dex/debug/ app/build/intermediates/javac/debug/classes/"$RELATIVE_PATH"*.class
+/Users/leonardo/Library/Android/sdk/build-tools/37.0.0/d8 --min-api 28 --output app/build/intermediates/dex/debug/ app/build/intermediates/javac/debug/classes/"$RELATIVE_PATH"*.class
 
 java -jar tools/baksmali.jar d app/build/intermediates/dex/debug/classes.dex -o app/build/intermediates/smali/debug
 
