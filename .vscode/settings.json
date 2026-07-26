@@ -1,0 +1,8 @@
+{
+  "java.project.sourcePaths": ["app/src/main/java"],
+  "java.project.outputPath": "target/classes",
+  "java.project.referencedLibraries": [
+    "lib/**/*.jar",
+    "/Users/leonardo/Library/Android/sdk/platforms/android-34/android.jar"
+  ]
+}

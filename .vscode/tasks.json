@@ -1,18 +1,16 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "java_to_smali: Convert Java to Smali",
-            "type": "shell",
-            "command": "${workspaceFolder}/scripts/java_to_smali.sh",
-            "args": [
-                "${file}"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "problemMatcher": []
-        }
-    ]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "java2smali",
+      "type": "shell",
+      "command": "${workspaceFolder}/java-to-smali.sh",
+      "args": ["${file}"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    }
+  ]
 }
