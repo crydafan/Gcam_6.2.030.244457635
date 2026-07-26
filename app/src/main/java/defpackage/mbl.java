@@ -14,16 +14,11 @@ public class mbl extends Exception {
         super(th);
     }
 
-    public static Object a(ozs ozsVar) {
+    public static Object a(ozs ozsVar) throws InterruptedException, mbl {
         try {
             return ozsVar.get();
-        } catch (ExecutionException | InterruptedException e) {
-            try {
-                throw new mbl(e);
-            } catch (mbl ex) {
-                ex.printStackTrace();
-                return null;
-            }
+        } catch (ExecutionException e) {
+            throw new mbl(e);
         }
     }
 }

@@ -16,7 +16,7 @@ final class bbx implements lzb {
         if (pointF.x < 0.0f || pointF.y < 0.0f) {
             return;
         }
-        if (bbpVar.b == mmt.FRONT) {
+        if (bbpVar.b == mmt.a) {
             pointF.x = 1.0f - pointF.x;
         }
         bbpVar.a.c(pointF);

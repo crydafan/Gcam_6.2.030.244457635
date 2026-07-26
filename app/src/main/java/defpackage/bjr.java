@@ -1,7 +1,7 @@
 package defpackage;
 
 public interface bjr extends lyu {
-    Object a();
+    Object a() throws InterruptedException, bjs;
 
     Object b();
 

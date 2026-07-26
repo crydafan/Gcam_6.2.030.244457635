@@ -16,7 +16,7 @@ public final class beh {
     }
 
     public beh(mpd mpdVar, mmb mmbVar) {
-        this(mpdVar, mmbVar.d(), mmbVar.b() == mmt.FRONT);
+        this(mpdVar, mmbVar.d(), mmbVar.b() == mmt.a);
     }
 
     public static int a(int i, int i2, boolean z) {

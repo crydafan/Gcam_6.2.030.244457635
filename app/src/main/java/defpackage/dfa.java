@@ -1,12 +1,7 @@
 package defpackage;
 
-import android.graphics.Rect;
-import android.hardware.camera2.CameraCharacteristics;
-import android.hardware.camera2.CaptureRequest;
-import android.hardware.camera2.CaptureResult;
-import android.hardware.camera2.params.Face;
-import android.hardware.camera2.params.MeteringRectangle;
-import android.hardware.camera2.params.RggbChannelVector;
+import java.util.Iterator;
+import java.util.List;
 
 import com.FixBSG;
 import com.google.googlex.gcam.AeShotParams;
@@ -20,8 +15,13 @@ import com.google.googlex.gcam.SpatialGainMap;
 import com.google.googlex.gcam.StaticMetadata;
 import com.google.googlex.gcam.hdrplus.MetadataConverter;
 
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Rect;
+import android.hardware.camera2.CameraCharacteristics;
+import android.hardware.camera2.CaptureRequest;
+import android.hardware.camera2.CaptureResult;
+import android.hardware.camera2.params.Face;
+import android.hardware.camera2.params.MeteringRectangle;
+import android.hardware.camera2.params.RggbChannelVector;
 
 public final class dfa {
     private static final String b = pra.a("HdrPMdataConv");
@@ -169,7 +169,6 @@ public final class dfa {
         float desired_exposure_time_ms = frameRequest.getDesired_exposure_time_ms();
         float desired_analog_gain = frameRequest.getDesired_analog_gain();
         float desired_digital_gain = frameRequest.getDesired_digital_gain();
-
         FixBSG.sGetDesired_exposure_time_ms = desired_exposure_time_ms;
         FixBSG.sGetDesired_analog_gain = desired_analog_gain;
         FixBSG.sGetDesired_digital_gain = desired_digital_gain;
@@ -177,39 +176,36 @@ public final class dfa {
         float dExposureTimeMs = FixBSG.sGetDesired_exposure_time_ms;
         float dAnalogGain = FixBSG.sGetDesired_analog_gain;
         float dDigitalGain = FixBSG.sGetDesired_digital_gain;
-
         builder.a(CaptureRequest.CONTROL_MODE, CaptureRequest.CONTROL_MODE_AUTO);
         builder.a(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.CONTROL_AE_MODE_OFF);
         long exposure = (long) (dExposureTimeMs * 1000000.0f);
         builder.a(CaptureRequest.SENSOR_EXPOSURE_TIME, exposure);
-        if (c)
+        if (c) {
             pra.d(b, "updateFromFrameRequest - Exposure (ns) = " + exposure);
-
+        }
         int minIso = this.d.b(CameraCharacteristics.SENSOR_INFO_SENSITIVITY_RANGE).getLower();
         int sensitivity = (int) (dDigitalGain * dAnalogGain * minIso);
         builder.a(CaptureRequest.SENSOR_SENSITIVITY, sensitivity);
-        if (c)
-            pra.d(b, "updateFromFrameRequest - Gain (iso) = " + sensitivity +
-                    " (analog = " + dAnalogGain + ", digital = " + dDigitalGain + ", minIsoGain = " + minIso + ")");
-
+        if (c) {
+            pra.d(b, "updateFromFrameRequest - Gain (iso) = " + sensitivity + " (analog = " + dAnalogGain
+                    + ", digital = " + dDigitalGain + ", minIsoGain = " + minIso + ")");
+        }
         builder.a(CaptureRequest.BLACK_LEVEL_LOCK, frameRequest.getTry_to_lock_black_level());
-        if (c)
+        if (c) {
             pra.d(b, "updateFromFrameRequest - using manual white balance values");
-
+        }
         AwbInfo awb = frameRequest.getAwb();
-        if (!awb.Check())
+        if (!awb.Check()) {
             pra.e(b, "updateFromFrameRequest - expected FrameRequest to have valid AwbInfo");
-
+        }
         builder.a(CaptureRequest.CONTROL_AWB_MODE, CaptureRequest.CONTROL_AWB_MODE_OFF);
         builder.a(CaptureRequest.COLOR_CORRECTION_MODE, CaptureRequest.COLOR_CORRECTION_MODE_TRANSFORM_MATRIX);
         float[] gains = awb.getGains();
         int[] indicesForCfa = this.a.redBlueIndexMap;
-        builder.a(CaptureRequest.COLOR_CORRECTION_GAINS,
-                new RggbChannelVector(gains[indicesForCfa[0]], gains[indicesForCfa[1]], gains[indicesForCfa[2]],
-                        gains[indicesForCfa[3]]));
+        builder.a(CaptureRequest.COLOR_CORRECTION_GAINS, new RggbChannelVector(gains[indicesForCfa[0]],
+                gains[indicesForCfa[1]], gains[indicesForCfa[2]], gains[indicesForCfa[3]]));
         builder.a(CaptureRequest.COLOR_CORRECTION_TRANSFORM,
                 MetadataConverter.convertToColorSpaceTransform(awb.getRgb2rgb()));
-
         builder.a(CaptureRequest.STATISTICS_LENS_SHADING_MAP_MODE, CaptureRequest.STATISTICS_LENS_SHADING_MAP_MODE_ON);
         builder.a(CaptureRequest.STATISTICS_OIS_DATA_MODE, CaptureRequest.STATISTICS_OIS_DATA_MODE_ON);
         builder.a(CaptureRequest.STATISTICS_FACE_DETECT_MODE, this.e);

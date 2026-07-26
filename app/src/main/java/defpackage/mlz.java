@@ -49,8 +49,9 @@ final class mlz implements mmb {
                     this.j.a();
                 } catch (Exception e) {
                     String valueOf = String.valueOf(this.g.a);
-                    this.k.b(valueOf.length() != 0 ? "Unable to obtain StreamConfigurationMap for camera ".concat(valueOf) :
-                            "Unable to obtain StreamConfigurationMap for camera ", e);
+                    this.k.b(valueOf.length() != 0
+                            ? "Unable to obtain StreamConfigurationMap for camera ".concat(valueOf)
+                            : "Unable to obtain StreamConfigurationMap for camera ", e);
                     this.j.a();
                     return null;
                 }
@@ -72,7 +73,7 @@ final class mlz implements mmb {
 
     @Override
     public boolean C() {
-        return f() || b() == mmt.FRONT;
+        return f() || b() == mmt.a;
     }
 
     @Override
@@ -159,7 +160,7 @@ final class mlz implements mmb {
     @Override
     public mmt b() {
         int intValue = (Integer) b(CameraCharacteristics.LENS_FACING);
-        return intValue == 1 ? mmt.BACK : intValue == 0 ? mmt.FRONT : mmt.EXTERNAL;
+        return intValue == 1 ? mmt.b : intValue == 0 ? mmt.a : mmt.c;
     }
 
     @Override

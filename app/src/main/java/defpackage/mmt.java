@@ -1,12 +1,20 @@
 package defpackage;
 
 public enum mmt {
-    FRONT,
-    BACK,
-    EXTERNAL;
+    a,
+    b,
+    c;
 
     public static String a(mmt mmtVar) {
-        int ordinal = mmtVar.ordinal();
-        return ordinal != 0 ? ordinal != 1 ? ordinal != 2 ? "unknown" : "external" : "back" : "front";
+        switch (mmtVar.ordinal()) {
+            case 0:
+                return "front";
+            case 1:
+                return "back";
+            case 2:
+                return "external";
+            default:
+                return "unknown";
+        }
     }
 }
